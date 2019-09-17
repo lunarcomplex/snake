@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <title>game title</title>
+  <head>
+    <style>
+      body{
+        background-color: #272b30;
+        overflow: hidden;
+        margin: auto;
+        display: block;
+      }
+      #game_window{
+        margin: auto;
+        display: block;
+      }
+      #under_canvas,
+      #main_canvas,
+      #over_canvas,
+      #hud_canvas{
+        margin: auto;
+        display: block;
+        position: absolute;
+        border:1px solid #000000;
+        background-color: transparent;
+      }
+      #under_canvas{z-index: 0}
+      #main_canvas{z-index: 1}
+      #over_canvas{z-index: 2}
+      #hud_canvas{z-index: 3}
+      #hidden_canvas{display: none}
+    </style>
+  </head>
+  <body onload="main();">
+    <div id="game_window" align="center" oncontextmenu="return false;">
+      <canvas id="under_canvas" align="center" oncontextmenu="return false;"></canvas><!-- layer 1, (layer[0]) -->
+      <canvas id="main_canvas" align="center" oncontextmenu="return false;"></canvas><!-- layer 2, (layer[1]) -->
+      <canvas id="over_canvas" align="center" oncontextmenu="return false;"></canvas><!-- layer 3, (layer[2]) -->
+      <canvas id="hud_canvas" align="center" oncontextmenu="return false;"></canvas><!-- layer 4, (layer[3]) -->
+      <canvas id="hidden_canvas" align="center" oncontextmenu="return false;"></canvas>
+    </div>
+  </body>
+  <!-- setupController
+    Initialize values, this includes values for the next controllers.
+  --><script type="text/javascript" src="scripts/setupController.js"></script>
+
+  <!-- graphicsController
+    Display functions to use for graphics (images, text, shapes, lines, etc).
+  --><script type="text/javascript" src="scripts/graphicsController.js"></script>
+
+  <!-- sceneController
+    Handles whats being displayed to the screen while also running the main loop.
+  --><script type="text/javascript" src="scripts/sceneController.js"></script>
+</html>
