@@ -130,6 +130,10 @@ function main(){
 				}
 			}
 		}
+
+		// update the camera location
+		camera.x += Math.floor((player.x-camera.x)/16);
+		camera.y += Math.floor((player.y-camera.y)/16);
 	}
 
 	//####################################################################################################
@@ -180,8 +184,11 @@ function main(){
 		//----------------------------------------------------------------------------------------------------
 		function displayGame(){
 			// accounting for player's x & y offsets:
-			var new_x = ((screen_size.w/2)-(player.w/2))-player.x;
-			var new_y = ((screen_size.h/2)-(player.h/2))-player.y;
+			// var new_x = ((screen_size.w/2)-(player.w/2))-player.x+camera.x;
+			// var new_y = ((screen_size.h/2)-(player.h/2))-player.y+camera.y;
+			// new values 
+			var new_x = (screen_size.w/2)-camera.x;
+			var new_y = (screen_size.h/2)-camera.y;
 
 			// // field grid
 			// // vertical
@@ -236,6 +243,8 @@ function main(){
 		// displays useful information ont he screen (used for debugging)
 		if(info_overlay){
 			displayText(layer[3], Math.floor(1000/delta), 2, 2, "left", "top", 255, 255, 0, 1, 20, "Helvetica", true, 0);
+			displayText(layer[3], "player x, y: " + player.x + ", " + player.y, 2, 1*tile_size+2, "left", "top", 255, 255, 0, 1, 20, "Helvetica", true, 0);
+			displayText(layer[3], "camera x, y: " + camera.x + ", " + camera.y, 2, 2*tile_size+2, "left", "top", 255, 255, 0, 1, 20, "Helvetica", true, 0);
 		}
 	}
 
